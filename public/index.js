@@ -5,7 +5,18 @@ async function main() {
     const refreshButton = document.querySelector('#reset-button');
 
 
-    let data = await fetch("http://localhost:9001/counter")
+    let data = await fetch("http://localhost:9001/counter",{
+        method:"PATCH",
+        headers: {
+            "content-type": "application/json",
+            accept: "application/json",
+        },
+        body:JSON.stringify({
+            value: 11,
+        })
+    },
+    
+    );
     let response = await data.json();
     console.log(response)
 
